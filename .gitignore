@@ -1,0 +1,25 @@
+# ----------------------------
+# 캐시 / 임시 임베딩 파일
+# ----------------------------
+cache/
+__pycache__/
+*.npz
+*.pt
+*.pkl
+*.npy
+
+# ----------------------------
+# 대용량 데이터 (raw + interim 중 일부)
+# ----------------------------
+data/raw/
+data/interim/note_index.csv
+data/interim/note_index_icu.csv
+data/interim/notes_48h.csv
+
+# ----------------------------
+# 가상환경 / 설정
+# ----------------------------
+.venv/
+env/
+ehr/
+*.log
