@@ -75,7 +75,7 @@ def load_token_embeddings(tokenizer='clinicalbert'):
       emb_dim (int)
     """
 
-    EMB_ROOT = '/data1/project/juhyeon/MAGNET/OSS/TM-HGNN/data/DATA_RAW/root'
+    EMB_ROOT = '/data1/project/hyun22/TMHGNN/data/DATA_RAW/root'
 
     # clinicalBERT 
     if tokenizer == 'clinicalbert':
@@ -414,8 +414,8 @@ class ConstructDatasetByNotes():
 
 if __name__ == '__main__':
     task = 'in-hospital-mortality'
-    raw_path = '/data1/project/juhyeon/MAGNET/OSS/TM-HGNN/data/DATA_RAW/'
-    pre_path = '/data1/project/juhyeon/MAGNET/OSS/TM-HGNN/data/DATA_PRE'
+    raw_path = '/data1/project/hyun22/TMHGNN/data/DATA_RAW'
+    pre_path = '/data1/project/hyun22/TMHGNN/data/DATA_PRE'
 
     dictionary = open(os.path.join(raw_path, 'root', 'vocab.txt')).read().split()
 

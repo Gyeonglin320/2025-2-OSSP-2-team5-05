@@ -8,12 +8,12 @@ sys.path.append('./data/graph_construction/prepare_notes')
 from ConstructDatasetByNotes import *
 
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))  
+BASE_DIR  = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+DATA_DIR    = os.path.join(BASE_DIR, 'data')
 
-IMDB_PATH = os.path.join(BASE_DIR, 'data', 'IMDB_HCUT') 
-PRE_PATH  = os.path.join(BASE_DIR, 'data', 'DATA_PRE')
-RAW_PATH  = os.path.join(BASE_DIR, 'data', 'DATA_RAW')
-
+IMDB_PATH   = os.path.join(DATA_DIR, 'IMDB_HCUT')
+PRE_PATH    = os.path.join(DATA_DIR, 'DATA_PRE')
+RAW_PATH    = os.path.join(DATA_DIR, 'DATA_RAW')
 
 class PygNotesGraphDataset(InMemoryDataset):
     def __init__(self, name, split, tokenizer, dictionary, pre_path, data_type='hyper', transform=None, pre_transform=None):
@@ -111,7 +111,7 @@ if __name__ == '__main__':
     args, _ = parser.parse_known_args()
     
     # vocabs generated from benchmark codes
-    dictionary = open('/data1/project/juhyeon/MAGNET/OSS/TM-HGNN/data/DATA_RAW/root/vocab.txt').read().split()
+    dictionary = open(os.path.join(RAW_PATH, 'root', 'vocab.txt')).read().split()
 
     if args.action == 'create':
         # PygNotesGraphDataset(name='in-hospital-mortality', split=args.split, tokenizer='word2vec', dictionary=dictionary)

@@ -131,8 +131,12 @@ def train(num_epochs, model, train_loader, val_loader,  test_loader, criterion, 
             running_train_loss += loss.item()  # track the loss value 
 
             probs = torch.sigmoid(logits)         # (B,)
-            pred = (probs >= 0.5).long()          # 0 또는 1          
-            running_train_accuracy = int((pred == data.y).sum())
+            pred = (probs >= 0.5).long()          # 0 또는 1  
+            
+            running_train_correct += int((pred == y_true.long()).sum())
+            total += y_true.size(0)
+                    
+            # running_train_accuracy = int((pred == data.y).sum())
             
             step += 1
  

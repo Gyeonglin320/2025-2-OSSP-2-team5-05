@@ -35,7 +35,12 @@ def create_hyper_df(partition, action):
             os.makedirs(output_dir)
         patients = list(filter(lambda x: x.find("episode") != -1, os.listdir(os.path.join(args.raw_path, args.task, split))))
         for patient in tqdm(patients[:], desc='Iterating over patients in {}_{}_{}'.format(args.raw_path, args.task, split)):
-            p_df = pd.read_csv(os.path.join(args.raw_path, args.task, split, patient), sep=',', header=0)
+            # p_df = pd.read_csv(os.path.join(args.raw_path, args.task, split, patient), sep=',', header=0)
+            p_df = pd.read_csv(
+                os.path.join(args.raw_path, args.task, split, patient),
+                sep='\t', engine='python', header=0
+            )
+
             p_hyper_df = note_hyper(p_df)
             if len(p_hyper_df) > 0:
                 p_hyper_df.to_csv(os.path.join(output_dir, patient), sep='\t', index=False)

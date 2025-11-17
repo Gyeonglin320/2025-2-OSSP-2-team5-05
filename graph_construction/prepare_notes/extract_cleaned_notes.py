@@ -190,6 +190,17 @@ def clean_docs():
             p_df = pd.read_csv(os.path.join(args.raw_path, args.task, partition, patient),
                                sep='\t', header=0)
             notes = p_df['TEXT'].tolist()
+            if hasattr(args, "clean_column") and args.clean_column in p_df.columns:
+                col = args.clean_column
+            elif "TEXT" in p_df.columns:
+                col = "TEXT"
+            else:
+                # 디버깅용: 어떤 컬럼들이 있는지 찍어보기
+                print(f"[ERROR] Column '{args.clean_column}' or 'TEXT' not found in {patient}")
+                print("       columns:", list(p_df.columns))
+                raise ValueError("No valid text column found")
+
+            notes = p_df[col].tolist()
             for note in notes:
                 fixed_note = getText(note)
                 for word in fixed_note.split(' '):
@@ -241,13 +252,16 @@ def clean_docs():
 
         print(f'   > Loading {args.bert_model} ...')
         tokenizer = AutoTokenizer.from_pretrained(args.bert_model)
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         model = AutoModel.from_pretrained(args.bert_model)
+        model.to(device)
         model.eval()
 
         emb_dict = {}
         with torch.no_grad():
             for w in tqdm(vocab_words, desc='   > ClinicalBERT embeddings'):
                 tokens = tokenizer(w, return_tensors='pt', add_special_tokens=False)
+                tokens = {k: v.to(device) for k, v in tokens.items()}
                 if tokens['input_ids'].shape[1] == 0:
                     continue
                 outputs = model(**tokens)
@@ -298,6 +312,11 @@ if __name__ == '__main__':
     parser.add_argument('--min_freq', type=int, default=10)
 
     args, _ = parser.parse_known_args()
+    
+    #디렉토리 생성
+    os.makedirs(os.path.join(args.raw_path, 'root'), exist_ok=True)
+    os.makedirs(os.path.join(args.raw_path, args.task), exist_ok=True)
+    os.makedirs(args.pre_path, exist_ok=True)
 
     args.vocab_output_path = os.path.join(args.raw_path, 'root', 'vocab.txt')
     args.token_embedding_path = os.path.join(args.raw_path, 'root', f'{args.tokenizer}_{args.dimension}')
