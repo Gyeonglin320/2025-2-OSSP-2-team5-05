@@ -237,3 +237,8 @@ graph_construction/prepare_notes/pre_transform.pt
 
 # Your local runs or logs
 runs/
+
+
+# === Allow tracked model file for TM-HGNN ===
+!TM-HGNN/models/
+!TM-HGNN/models/best_model.pth

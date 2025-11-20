@@ -9,3 +9,4 @@ tqdm
 networkx
 scipy
 gensim
+huggingface_hub
