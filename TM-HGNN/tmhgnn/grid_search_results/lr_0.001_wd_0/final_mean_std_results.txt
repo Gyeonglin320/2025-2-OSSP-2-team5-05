@@ -1,0 +1,5 @@
+==== FINAL 5-run MEAN ± STD RESULTS ====
+
+ACC   : 90.7337 ± 0.9066
+AUPRC : 0.5914 ± 0.0149
+AUROC : 0.8952 ± 0.0047

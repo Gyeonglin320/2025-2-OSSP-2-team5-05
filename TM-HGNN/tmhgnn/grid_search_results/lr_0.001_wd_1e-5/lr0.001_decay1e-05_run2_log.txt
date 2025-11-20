@@ -1,0 +1,15 @@
+=== Best on Validation (across epochs) ===
+best_val_acc   : 91.6329
+best_val_loss  : 0.0231
+best_val_auprc : 0.5638
+best_val_auroc : 0.8936
+
+=== Final Epoch Validation ===
+val_acc   : 89.9087
+val_auprc : 0.5293
+val_auroc : 0.8782
+
+=== Final Test ===
+test_acc   : 88.9745
+test_auprc : 0.5217
+test_auroc : 0.8863

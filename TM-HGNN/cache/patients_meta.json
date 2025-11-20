@@ -1,0 +1,72 @@
+[
+  {
+    "id": "test_0",
+    "label": 0,
+    "age": null,
+    "sex": null,
+    "icu": null
+  },
+  {
+    "id": "test_1",
+    "label": 0,
+    "age": null,
+    "sex": null,
+    "icu": null
+  },
+  {
+    "id": "test_2",
+    "label": 0,
+    "age": null,
+    "sex": null,
+    "icu": null
+  },
+  {
+    "id": "test_3",
+    "label": 1,
+    "age": null,
+    "sex": null,
+    "icu": null
+  },
+  {
+    "id": "test_4",
+    "label": 0,
+    "age": null,
+    "sex": null,
+    "icu": null
+  },
+  {
+    "id": "test_5",
+    "label": 0,
+    "age": null,
+    "sex": null,
+    "icu": null
+  },
+  {
+    "id": "test_6",
+    "label": 0,
+    "age": null,
+    "sex": null,
+    "icu": null
+  },
+  {
+    "id": "test_7",
+    "label": 1,
+    "age": null,
+    "sex": null,
+    "icu": null
+  },
+  {
+    "id": "test_8",
+    "label": 0,
+    "age": null,
+    "sex": null,
+    "icu": null
+  },
+  {
+    "id": "test_9",
+    "label": 0,
+    "age": null,
+    "sex": null,
+    "icu": null
+  }
+]
