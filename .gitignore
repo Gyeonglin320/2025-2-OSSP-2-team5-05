@@ -205,3 +205,35 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+
+# === TM-HGNN custom ignore ===
+
+# Model checkpoints
+*.pt
+*.pth
+*.pkl
+
+# PyTorch Lightning / training cache
+lightning_logs/
+
+# Graph cache & generated data
+tmhgnn/cache/
+tmhgnn/grid_search_results/
+
+# Local data (MIMIC-derived → 절대 GitHub 업로드 금지)
+data/DATA_RAW/
+data/DATA_PRE/
+
+# Graph generation intermediate files
+graph_construction/prepare_notes/test_hyper/
+graph_construction/prepare_notes/train_hyper/
+graph_construction/prepare_notes/pre_filter.pt
+graph_construction/prepare_notes/pre_transform.pt
+
+# Python build shutil artifacts
+*.npy
+*.npz
+
+# Your local runs or logs
+runs/
